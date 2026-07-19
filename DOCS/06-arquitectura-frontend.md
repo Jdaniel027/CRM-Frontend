@@ -46,13 +46,51 @@ src/
 │   └── configuracion/
 │
 ├── components/                 # Compartidos entre features
-│   ├── ui/                     # shadcn base
-│   ├── data-table/             # Tabla genérica
-│   ├── filters/                # Panel de filtros genérico
+│   ├── ui/                     # shadcn base (15 componentes)
+│   │   ├── button.tsx          # Button con variantes (cva)
+│   │   ├── input.tsx           # Input de texto
+│   │   ├── textarea.tsx        # Área de texto
+│   │   ├── dialog.tsx          # Modal (Radix Dialog)
+│   │   ├── sheet.tsx           # Panel lateral/drawer (Radix Dialog)
+│   │   ├── dropdown-menu.tsx   # Menú desplegable
+│   │   ├── select.tsx          # Select nativo
+│   │   ├── tabs.tsx            # Pestañas
+│   │   ├── tooltip.tsx         # Tooltip informativo
+│   │   ├── avatar.tsx          # Avatar con fallback
+│   │   ├── label.tsx           # Label para formularios
+│   │   ├── separator.tsx       # Línea separadora
+│   │   ├── badge.tsx           # Badge genérico con variantes
+│   │   ├── scroll-area.tsx     # Scroll personalizado
+│   │   ├── switch.tsx          # Toggle switch
+│   │   ├── popover.tsx         # Contenido flotante
+│   │   └── breadcrumb.tsx      # Navegación migas de pan
+│   ├── data-table/             # Tabla genérica (TanStack Table)
+│   │   ├── DataTable.tsx       # Wrapper completo con paginación/sorting
+│   │   └── index.ts
+│   ├── filters/                # Filtros reutilizables
+│   │   ├── FilterDropdown.tsx  # Dropdown con checkboxes
+│   │   ├── FilterChips.tsx     # Chips removibles de filtros activos
+│   │   ├── FilterRangeInput.tsx# Rango numérico/fecha
+│   │   └── index.ts
 │   ├── status-badge/           # StatusBadge + CategoryBadge
-│   ├── notifications/          # Bell, Popup, Modal
-│   ├── avatar/                 # AvatarStack
-│   └── empty-state/            # EmptyState
+│   │   ├── StatusBadge.tsx     # Badge de estado (pendiente/aprobada/etc)
+│   │   └── CategoryBadge.tsx   # Badge de categoría de documento
+│   ├── notifications/          # Sistema de notificaciones
+│   │   ├── NotificationBell.tsx# Campana con badge
+│   │   ├── NotificationPopup.tsx# Popup de lista
+│   │   ├── NotificationModal.tsx# Modal de todas
+│   │   ├── types.ts           # Interfaz Notification
+│   │   └── index.ts
+│   ├── search-input/           # Búsqueda con lupa + X
+│   │   ├── SearchInput.tsx
+│   │   └── index.ts
+│   ├── page-header/            # Encabezado de página
+│   │   ├── PageHeader.tsx
+│   │   └── index.ts
+│   ├── empty-state/            # Estado vacío genérico
+│   │   ├── EmptyState.tsx
+│   │   └── index.ts
+│   └── avatar/                 # (pendiente) AvatarStack
 │
 ├── lib/                        # Utilidades transversales
 │   ├── api-client.ts           # Instancia base de fetch

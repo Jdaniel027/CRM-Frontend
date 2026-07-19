@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import {
   LayoutDashboard,
   FileText,
@@ -8,12 +9,12 @@ import {
   BarChart3,
   CreditCard,
   Settings,
-  ChevronLeft,
-  ChevronRight,
+  PanelLeft,
 } from 'lucide-react'
 import { useLocation } from 'react-router-dom'
 import { useSidebarStore } from '@/stores/sidebar-store'
 import { useSessionStore } from '@/stores/session-store'
+import { useMediaQuery } from '@/hooks/use-media-query'
 import { puedeVer } from '@/lib/permissions'
 import SidebarItem from './SidebarItem'
 import { cn } from '@/lib/utils'
@@ -31,34 +32,45 @@ const allItems = [
 ]
 
 export default function Sidebar() {
-  const { collapsed, toggle } = useSidebarStore()
+  const { collapsed, toggle, setCollapsed } = useSidebarStore()
   const { user } = useSessionStore()
   const location = useLocation()
+  const isTablet = useMediaQuery('(max-width: 1024px)')
 
-  const items = allItems.filter((item) =>
-    user?.rol ? puedeVer(user.rol, item.modulo) : false
-  )
+  const effectiveCollapsed = isTablet ? true : collapsed
+
+  const items = allItems.filter((item) => (user?.rol ? puedeVer(user.rol, item.modulo) : false))
+
+  useEffect(() => {
+    if (isTablet) {
+      setCollapsed(true)
+    }
+  }, [location.pathname, isTablet, setCollapsed])
 
   return (
     <aside
+      role="navigation"
+      aria-label="Menú principal"
       className={cn(
-        'fixed left-0 top-0 z-40 flex h-screen flex-col bg-sidebar text-white transition-all duration-300',
-        collapsed ? 'w-[72px]' : 'w-[260px]'
+        'fixed left-0 top-0 z-40 flex h-screen flex-col overflow-hidden bg-sidebar text-white transition-[width] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]',
+        effectiveCollapsed ? 'w-[72px]' : 'w-[260px]'
       )}
     >
-      <div className="flex h-16 items-center justify-between border-b border-white/10 px-4">
-        {!collapsed && (
-          <span className="text-lg font-semibold">CRM Gasolineras</span>
+      <div className="flex h-16 flex-shrink-0 items-center justify-between border-b border-white/10 px-4">
+        {!effectiveCollapsed && (
+          <span className="whitespace-nowrap text-lg font-semibold">CRM Gasolineras</span>
         )}
         <button
           onClick={toggle}
-          className="rounded-md p-2 hover:bg-sidebar-hover"
+          aria-label={effectiveCollapsed ? 'Expandir menú' : 'Colapsar menú'}
+          aria-expanded={!effectiveCollapsed}
+          className="rounded-md p-2 text-sidebar-text hover:bg-sidebar-hover"
         >
-          {collapsed ? <ChevronRight size={20} /> : <ChevronLeft size={20} />}
+          <PanelLeft size={20} />
         </button>
       </div>
 
-      <nav className="flex-1 overflow-y-auto py-4">
+      <nav aria-label="Navegación principal" className="flex-1 overflow-y-auto overflow-x-hidden py-4">
         {items.map((item) => (
           <SidebarItem
             key={item.path}
@@ -66,21 +78,26 @@ export default function Sidebar() {
             label={item.label}
             path={item.path}
             active={location.pathname === item.path}
-            collapsed={collapsed}
+            collapsed={effectiveCollapsed}
           />
         ))}
       </nav>
 
-      <div className="border-t border-white/10 p-4">
-        {!collapsed && user && (
-          <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-medium">
+      <div className="flex-shrink-0 border-t border-white/10 p-4">
+        {user && (
+          <div
+            className="flex items-center gap-3"
+            title={effectiveCollapsed ? `${user.nombre} — ${user.email}` : undefined}
+          >
+            <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary text-sm font-medium">
               {user.nombre.charAt(0).toUpperCase()}
             </div>
-            <div className="flex-1 overflow-hidden">
-              <p className="truncate text-sm font-medium">{user.nombre}</p>
-              <p className="truncate text-xs text-white/60">{user.email}</p>
-            </div>
+            {!effectiveCollapsed && (
+              <div className="flex-1 overflow-hidden">
+                <p className="truncate text-sm font-medium">{user.nombre}</p>
+                <p className="truncate text-xs text-white/60">{user.email}</p>
+              </div>
+            )}
           </div>
         )}
       </div>

@@ -1,8 +1,26 @@
+/**
+ * Input — Campo de texto estándar.
+ *
+ * Wrapper sobre <input> con estilos consistentes del CRM.
+ * Soporta forwardRef para integración con react-hook-form.
+ *
+ * @example
+ * ```tsx
+ * <Input placeholder="Buscar..." value={query} onChange={...} />
+ * <Input type="email" disabled />
+ * ```
+ */
+
 import * as React from 'react'
 import { cn } from '@/lib/utils'
 
+/** Props del componente Input (extiende todos los atributos HTML de input) */
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
 
+/**
+ * Componente Input reutilizable.
+ * Muestra un borde primario al hacer focus y soporta estado disabled.
+ */
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, ...props }, ref) => {
     return (

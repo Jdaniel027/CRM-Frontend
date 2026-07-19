@@ -10,15 +10,22 @@ interface SidebarItemProps {
   collapsed: boolean
 }
 
-export default function SidebarItem({ icon: Icon, label, path, active, collapsed }: SidebarItemProps) {
+export default function SidebarItem({
+  icon: Icon,
+  label,
+  path,
+  active,
+  collapsed,
+}: SidebarItemProps) {
   return (
     <Link
       to={path}
+      aria-label={label}
       className={cn(
-        'flex items-center gap-3 rounded-md mx-3 px-3 py-2.5 text-sm font-medium transition-colors',
+        'mx-3 flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium transition-colors',
         active
-          ? 'bg-sidebar-active text-white'
-          : 'text-white/70 hover:bg-sidebar-hover hover:text-white'
+          ? 'bg-sidebar-active text-sidebar-textActive'
+          : 'text-sidebar-text hover:bg-sidebar-hover hover:text-sidebar-textActive'
       )}
       title={collapsed ? label : undefined}
     >

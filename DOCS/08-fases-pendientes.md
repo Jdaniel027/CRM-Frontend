@@ -6,7 +6,7 @@
 |------|-------------|--------|
 | **Fase 0** | Setup del proyecto (config, dependencias, base) | ✅ COMPLETADA |
 | **Fase 1** | Base de la app (routes, layout, stores, tipos) | ✅ COMPLETADA |
-| **Fase 2** | Componentes compartidos (UI, DataTable, Filtros, StatusBadge) | ⏳ PENDIENTE |
+| **Fase 2** | Componentes compartidos (UI, DataTable, Filtros, StatusBadge) | ✅ COMPLETADA |
 | **Fase 3A** | Auth (LoginPage, api, types) | ⏳ PENDIENTE |
 | **Fase 3B** | Empleados (CRUD más simple, plantilla) | ⏳ PENDIENTE |
 | **Fase 3C** | Clientes (CRUD + perfil con tabs) | ⏳ PENDIENTE |
