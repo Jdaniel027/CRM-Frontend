@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 248 249 252;
+    --foreground: 26 26 46;
+    --primary: 93 136 205;
+    --primary-hover: 74 117 184;
+    --sidebar: 30 42 71;
+    --muted: 241 243 249;
+    --muted-foreground: 107 114 128;
+    --border: 229 231 235;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+}
