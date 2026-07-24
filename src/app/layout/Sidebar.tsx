@@ -28,7 +28,12 @@ const allItems = [
   { icon: Wrench, label: 'Servicios', path: '/servicios', modulo: 'servicios' as const },
   { icon: BarChart3, label: 'Dashboard', path: '/dashboard', modulo: 'dashboard' as const },
   { icon: CreditCard, label: 'Pagos', path: '/pagos', modulo: 'pagos' as const },
-  { icon: Settings, label: 'Configuración', path: '/configuracion', modulo: 'configuracion' as const },
+  {
+    icon: Settings,
+    label: 'Configuración',
+    path: '/configuracion',
+    modulo: 'configuracion' as const,
+  },
 ]
 
 export default function Sidebar() {
@@ -56,7 +61,10 @@ export default function Sidebar() {
         effectiveCollapsed ? 'w-[72px]' : 'w-[260px]'
       )}
     >
-      <div className="flex h-16 flex-shrink-0 items-center justify-between border-b border-white/10 px-4">
+      <div className={cn(
+        "flex h-16 flex-shrink-0 items-center border-b border-white/10",
+        effectiveCollapsed ? "justify-center px-0" : "justify-between px-4"
+      )}>
         {!effectiveCollapsed && (
           <span className="whitespace-nowrap text-lg font-semibold">CRM Gasolineras</span>
         )}
@@ -64,13 +72,16 @@ export default function Sidebar() {
           onClick={toggle}
           aria-label={effectiveCollapsed ? 'Expandir menú' : 'Colapsar menú'}
           aria-expanded={!effectiveCollapsed}
-          className="rounded-md p-2 text-sidebar-text hover:bg-sidebar-hover"
+          className="text-sidebar-text rounded-md p-2 hover:bg-sidebar-hover"
         >
           <PanelLeft size={20} />
         </button>
       </div>
 
-      <nav aria-label="Navegación principal" className="flex-1 overflow-y-auto overflow-x-hidden py-4">
+      <nav
+        aria-label="Navegación principal"
+        className="flex-1 overflow-y-auto overflow-x-hidden py-4"
+      >
         {items.map((item) => (
           <SidebarItem
             key={item.path}

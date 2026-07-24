@@ -22,10 +22,11 @@ export default function SidebarItem({
       to={path}
       aria-label={label}
       className={cn(
-        'mx-3 flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium transition-colors',
+        'flex items-center rounded-md py-2.5 text-sm font-medium transition-colors',
+        collapsed ? 'justify-center px-5' : 'mx-3 justify-start gap-3 px-3',
         active
-          ? 'bg-sidebar-active text-sidebar-textActive'
-          : 'text-sidebar-text hover:bg-sidebar-hover hover:text-sidebar-textActive'
+          ? 'text-sidebar-textActive bg-sidebar-active'
+          : 'text-sidebar-text hover:text-sidebar-textActive hover:bg-sidebar-hover'
       )}
       title={collapsed ? label : undefined}
     >
