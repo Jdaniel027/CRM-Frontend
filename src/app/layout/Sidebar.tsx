@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import {
   LayoutDashboard,
   FileText,
-  LayoutGrid,
+  FolderOpen,
   Users,
   UserCog,
   Wrench,
@@ -22,7 +22,7 @@ import { cn } from '@/lib/utils'
 const allItems = [
   { icon: LayoutDashboard, label: 'Inicio', path: '/', modulo: 'home' as const },
   { icon: FileText, label: 'Cotizaciones', path: '/cotizaciones', modulo: 'cotizaciones' as const },
-  { icon: LayoutGrid, label: 'Kanban', path: '/kanban', modulo: 'kanban' as const },
+  { icon: FolderOpen, label: 'Proyectos', path: '/proyectos', modulo: 'proyectos' as const },
   { icon: Users, label: 'Clientes', path: '/clientes', modulo: 'clientes' as const },
   { icon: UserCog, label: 'Empleados', path: '/empleados', modulo: 'empleados' as const },
   { icon: Wrench, label: 'Servicios', path: '/servicios', modulo: 'servicios' as const },

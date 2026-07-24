@@ -22,7 +22,7 @@
 import { type Rol } from '@/types/rol'
 
 /** Módulos disponibles en el CRM */
-type Modulo = 'clientes' | 'empleados' | 'dashboard' | 'pagos' | 'cotizaciones' | 'kanban' | 'proyectos' | 'servicios' | 'configuracion' | 'home'
+type Modulo = 'clientes' | 'empleados' | 'dashboard' | 'pagos' | 'cotizaciones' | 'proyectos' | 'servicios' | 'configuracion' | 'home'
 
 /** Acciones permitidas sobre un módulo */
 type PermisoAccion = 'ver' | 'editar' | 'crear' | 'eliminar'
@@ -62,16 +62,10 @@ const permisos: Record<Modulo, Record<PermisoAccion, Rol[]>> = {
     crear: ['admin', 'empleado'],
     eliminar: ['admin'],
   },
-  kanban: {
+  proyectos: {
     ver: ['admin', 'empleado'],
     editar: ['admin', 'empleado'],
     crear: ['admin', 'empleado'],
-    eliminar: ['admin'],
-  },
-  proyectos: {
-    ver: ['admin', 'empleado'],
-    editar: ['admin'],
-    crear: ['admin'],
     eliminar: ['admin'],
   },
   servicios: {

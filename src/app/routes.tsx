@@ -4,7 +4,7 @@ import AppLayout from './layout/AppLayout'
 import LoginPage from '@/features/auth/LoginPage'
 import HomePage from '@/features/home/HomePage'
 import CotizacionesListPage from '@/features/cotizaciones/CotizacionesListPage'
-import KanbanPage from '@/features/kanban/KanbanPage'
+import ProyectosPage from '@/features/proyectos/ProyectosPage'
 import ClientesListPage from '@/features/clientes/ClientesListPage'
 import ClientePerfilPage from '@/features/clientes/ClientePerfilPage'
 import EmpleadosListPage from '@/features/empleados/EmpleadosListPage'
@@ -48,7 +48,7 @@ export default function AppRoutes() {
       >
         <Route index element={<HomePage />} />
         <Route path="cotizaciones" element={<CotizacionesListPage />} />
-        <Route path="kanban" element={<KanbanPage />} />
+        <Route path="proyectos" element={<ProyectosPage />} />
         <Route path="clientes" element={<ClientesListPage />} />
         <Route path="clientes/:id" element={<ClientePerfilPage />} />
         <Route

@@ -3,7 +3,7 @@
  *
  * Define los roles disponibles en el CRM:
  * - `admin`: Acceso completo a todos los módulos
- * - `empleado`: Acceso limitado (cotizaciones, kanban, clientes, servicios, etc.)
+ * - `empleado`: Acceso limitado (cotizaciones, proyectos, clientes, servicios, etc.)
  *
  * @example
  * ```tsx

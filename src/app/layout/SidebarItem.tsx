@@ -23,7 +23,7 @@ export default function SidebarItem({
       aria-label={label}
       className={cn(
         'flex items-center rounded-md py-2.5 text-sm font-medium transition-colors',
-        collapsed ? 'justify-center px-5' : 'mx-3 justify-start gap-3 px-3',
+        collapsed ? 'mx-3 justify-center px-0' : 'mx-3 justify-start gap-3 px-3',
         active
           ? 'text-sidebar-textActive bg-sidebar-active'
           : 'text-sidebar-text hover:text-sidebar-textActive hover:bg-sidebar-hover'
